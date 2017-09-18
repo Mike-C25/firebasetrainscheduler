@@ -10140,24 +10140,49 @@ th {
   background: #59CD90;
   color: white;
   margin: 0px auto;
-  margin-top: 30px;
   margin-bottom: 80px; }
   .header-block h1 {
     display: flex;
     align-items: center;
     vertical-align: middle;
     justify-content: center;
-    height: inherit; }
+    height: inherit;
+    margin-top: 0px; }
+
+.contain {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0px auto; }
+  @media screen and (max-width: 920px) {
+    .contain {
+      padding-left: 5px;
+      padding-right: 5px; } }
 
 #train-results {
   margin: 0px auto;
   margin-top: 30px;
   margin-bottom: 30px;
-  width: 80%;
+  width: 48%;
+  float: right;
   min-height: 400px; }
+  @media screen and (max-width: 920px) {
+    #train-results {
+      width: 100%;
+      float: none; } }
+  #train-results table th {
+    padding: 10px; }
+  #train-results table #table-body tr:nth-child(odd) {
+    background-color: rgba(89, 205, 144, 0.28); }
+  #train-results table #table-body td {
+    padding: 10px; }
 
 #train-form {
   margin: 0px auto;
   margin-top: 30px;
   margin-bottom: 30px;
-  width: 80%; }
+  width: 48%;
+  float: left; }
+  @media screen and (max-width: 920px) {
+    #train-form {
+      width: 100%;
+      float: none; } }

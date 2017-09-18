@@ -28,30 +28,67 @@ $gr: #59CD90;
     display: block;
     background: $gr;
     color: white;
-	margin: 0px auto;
-	margin-top: 30px;
-	margin-bottom: 80px;
+    margin: 0px auto;
+    margin-bottom: 80px;
     h1 {
         display: flex;
         align-items: center;
         vertical-align: middle;
         justify-content: center;
         height: inherit;
+        margin-top: 0px;
     }
 }
 
-#train-results{
+.contain{
+	padding-left: 15px;
+	padding-right: 15px;
 	margin: 0px auto;
-	margin-top: 30px;
-	margin-bottom: 30px;
-	width: 80%;
-	min-height: 400px;
+	 @media screen and (max-width: 920px){
+    	padding-left: 5px;
+	padding-right: 5px;
+    }
+}
+
+#train-results {
+    margin: 0px auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 48%;
+    float: right;
+    min-height: 400px;
+    @media screen and (max-width: 920px){
+    	width: 100%;
+    	float: none;
+    }
+    table {
+        th {
+            padding: 10px;
+        }
+
+        #table-body {
+        	 tr{
+        	&:nth-child(odd){
+        		background-color: rgba($gr,.28);
+        	}
+        }
+            td {
+                padding: 10px;
+            }
+
+        }
+    }
 }
 
 
-#train-form{
-	margin: 0px auto;
-	margin-top: 30px;
-	margin-bottom: 30px;
-	width: 80%;
+#train-form {
+    margin: 0px auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 48%;
+    float: left;
+     @media screen and (max-width: 920px){
+    	width: 100%;
+    	float: none;
+    }
 }

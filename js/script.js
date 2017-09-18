@@ -31,35 +31,52 @@ $(document).ready(function() {
         firstArrival = $('#first_train').val().trim();
 
         database.ref().push({
-        	name: trainName,
-        	destination: destination,
-        	frequency: freq,
-        	firstArrival: firstArrival,
-        	dateAdded: firebase.database.ServerValue.TIMESTAMP
+            name: trainName,
+            destination: destination,
+            frequency: freq,
+            firstArrival: firstArrival,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
 
     });
 
-    database.ref().orderByChild("name").on("child_added", function(childSnapshot){
-    	console.log(childSnapshot.val().firstArrival);
+    database.ref().orderByChild("name").on("child_added", function(childSnapshot) {
 
-    	// var current = moment().format();
-    	var tN = childSnapshot.val().name;
-    	var tD = childSnapshot.val().destination;
-    	var tF = childSnapshot.val().frequency;
-    	var tFA = childSnapshot.val().firstArrival;
-    	var tDA = childSnapshot.val().dateAdded;
+        // var current = moment().format();
+        var tN = childSnapshot.val().name;
+        var tD = childSnapshot.val().destination;
+        var tF = childSnapshot.val().frequency;
+        var tFA = childSnapshot.val().firstArrival;
+        var tDA = childSnapshot.val().dateAdded;
 
-		var tNA = "";
-    	var tMA = 0;
+        var tMA = 0;
+        var tNA = "";
 
 
-    	$('#table-body').append("<tr>" + "<td class='t-name'>" + tN + "</td>" +
-    	 "<td class='destination'>"+ destination + "</td>" + "<td class='frequency'>" +
-    	 tF + "</td>" + "<td class='next-arrival'>" + tNA + "</td>" + "<td class='min-away'>" + 
-    	 tMA + "</td>" + "</tr>");
-    }, function(err){
-    	console.log("Error: " + err);
+        tFA = moment(tFA, "hh:mm");
+        console.log(tFA)
+        var currentTime = moment().format();
+        console.log(currentTime);
+        var diffTime = moment().diff(moment(tFA), "minutes");
+        console.log(diffTime);
+        var remainder = diffTime % tF;
+        console.log(remainder);
+       	tMA = tF - remainder;
+       	console.log(tMA);
+        tNA = moment().add(tMA, "minutes");
+        console.log(tMA);
+        tNA = moment(tNA).format("hh:mm");
+        console.log(tMA);
+
+
+
+
+        $('#table-body').append("<tr>" + "<td class='t-name'>" + tN + "</td>" +
+            "<td class='destination'>" + tD + "</td>" + "<td class='frequency'>" +
+            tF + "</td>" + "<td class='next-arrival'>" + tNA + "</td>" + "<td class='min-away'>" +
+            tMA + "</td>" + "</tr>");
+    }, function(err) {
+        console.log("Error: " + err);
     });
 
 
