@@ -1,7 +1,30 @@
 $(document).ready(function() {
 
+var provider = new firebase.auth.GoogleAuthProvider();
+provider.addScope('profile');
+provider.addScope('email');
 
-    // Initialize Firebase
+
+firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a Google Access Token. You can use it to access the Google API.
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  var user = result.user;
+  // ...
+  authorizedRun();
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+  // ...
+});
+
+function authorizedRun(){
+	// Initialize Firebase
     var config = {
         apiKey: "AIzaSyBhPt4WJ0qd2HIS8pQGHhPAbIRyZbwS2u8",
         authDomain: "trainschedulerz.firebaseapp.com",
@@ -39,8 +62,8 @@ $(document).ready(function() {
                 minutesAway: 0,
                 dateAdded: firebase.database.ServerValue.TIMESTAMP
             });
-        }else{
-        	console.log("Please Fill Required Boxes");
+        } else {
+            console.log("Please Fill Required Boxes");
         }
 
 
@@ -76,16 +99,20 @@ $(document).ready(function() {
         console.log("Error: " + err);
     });
 
-    // setInterval(timeChange,60000);
-    // function timeChange(){
-    // 	database.ref().on("child_added", function(snapshot){
-    // 		for(key in snapshot.val()){
-    // if(key === "")	
-    // 		}
-    // 	});
+    // setInterval(timeChange, 60000);
+
+    // function timeChange() {
+    //     database.ref().once("child_added", function(snapshot) {
+    //         for (key in snapshot.val()) {
+               
+    //         }
+    //     });
 
     // }
     // timeChange();
+}
+    
+
 
 
 });
