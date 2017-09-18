@@ -20,7 +20,7 @@ $(document).ready(function() {
         // The signed-in user info.
         var user = result.user;
         // ...
-        $('.main-body').fadeIn(3000);
+        $('.main-body').fadeIn(1500);
         authorizedRun();
     }).catch(function(error) {
         // Handle Errors here.
