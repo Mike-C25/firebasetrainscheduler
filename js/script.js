@@ -29,20 +29,25 @@ $(document).ready(function() {
         destination = $('#destination').val().trim();
         freq = $('#frequency').val().trim();
         firstArrival = $('#first_train').val().trim();
+        if (trainName != "" && destination != "" && freq != "" && firstArrival != "") {
+            database.ref().push({
+                name: trainName,
+                destination: destination,
+                frequency: freq,
+                firstArrival: firstArrival,
+                nextArrival: "",
+                minutesAway: 0,
+                dateAdded: firebase.database.ServerValue.TIMESTAMP
+            });
+        }else{
+        	console.log("Please Fill Required Boxes");
+        }
 
-        database.ref().push({
-            name: trainName,
-            destination: destination,
-            frequency: freq,
-            firstArrival: firstArrival,
-            dateAdded: firebase.database.ServerValue.TIMESTAMP
-        });
 
     });
 
     database.ref().orderByChild("name").on("child_added", function(childSnapshot) {
 
-        // var current = moment().format();
         var tN = childSnapshot.val().name;
         var tD = childSnapshot.val().destination;
         var tF = childSnapshot.val().frequency;
@@ -54,20 +59,12 @@ $(document).ready(function() {
 
 
         tFA = moment(tFA, "hh:mm");
-        console.log(tFA)
         var currentTime = moment().format();
-        console.log(currentTime);
         var diffTime = moment().diff(moment(tFA), "minutes");
-        console.log(diffTime);
         var remainder = diffTime % tF;
-        console.log(remainder);
-       	tMA = tF - remainder;
-       	console.log(tMA);
+        tMA = tF - remainder;
         tNA = moment().add(tMA, "minutes");
-        console.log(tMA);
         tNA = moment(tNA).format("hh:mm");
-        console.log(tMA);
-
 
 
 
@@ -79,6 +76,16 @@ $(document).ready(function() {
         console.log("Error: " + err);
     });
 
+    // setInterval(timeChange,60000);
+    // function timeChange(){
+    // 	database.ref().on("child_added", function(snapshot){
+    // 		for(key in snapshot.val()){
+    // if(key === "")	
+    // 		}
+    // 	});
+
+    // }
+    // timeChange();
 
 
 });
