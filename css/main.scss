@@ -1,0 +1,57 @@
+@import 'materialize.scss';
+@import 'components/buttons';
+@import 'components/dropdown';
+@import 'components/grid';
+@import 'components/modal';
+@import 'components/normalize';
+@import 'components/roboto';
+@import 'components/tabs';
+@import 'components/transitions';
+@import 'components/variables';
+@import 'components/color';
+@import 'components/materialbox';
+@import 'components/tapTarget';
+@import 'components/table_of_contents';
+@import 'components/cards';
+
+
+
+
+
+$gr: #59CD90;
+
+///-------------------INDEX.HTML--------------------------------///
+//~header
+.header-block {
+    height: 200px;
+    width: 100%;
+    display: block;
+    background: $gr;
+    color: white;
+	margin: 0px auto;
+	margin-top: 30px;
+	margin-bottom: 80px;
+    h1 {
+        display: flex;
+        align-items: center;
+        vertical-align: middle;
+        justify-content: center;
+        height: inherit;
+    }
+}
+
+#train-results{
+	margin: 0px auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 80%;
+	min-height: 400px;
+}
+
+
+#train-form{
+	margin: 0px auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 80%;
+}

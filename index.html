@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Train Scheduler</title>
+    <link rel="stylesheet" href="./css/main.css" media="screen,projection">
+</head>
+
+<body>
+    <div class="header-block">
+        <h1>Choo Chooo Goes the Train...</h1>
+    </div>
+    <div id="train-results">
+        <table class="responsve-table striped bordered results">
+            <thead>
+                <tr>
+                    <th>Train Name</th>
+                    <th>Destination</th>
+                    <th>Frequency(min)</th>
+                    <th>Next Arrival</th>
+                    <th>Minutes Away</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+            </tbody>
+        </table>
+    </div>
+    <div id="train-form">
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="" id="train_name" type="text" class="validate">
+                        <label for="train_name">Train Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input placeholder="" id="destination" type="text" class="validate">
+                        <label for="destination">Destination</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="" id="first_train" type="text" class="validate">
+                        <label for="first_Train">First Train Time(HH:mm - military time)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="" id="frequency" type="text" class="validate">
+                        <label for="frequency">Frequency(min)</label>
+                    </div>
+                </div>
+                <button id="submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
+                </button>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+    <script src="./js/materialize.min.js" type="text/javascript" charset="utf-8" async defer></script>
+    <script src="./js/script.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>
